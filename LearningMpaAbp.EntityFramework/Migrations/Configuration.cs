@@ -28,6 +28,8 @@ namespace LearningMpaAbp.Migrations
                 //Default tenant seed (in host database).
                 new DefaultTenantCreator(context).Create();
                 new TenantRoleAndUserBuilder(context, 1).Create();
+
+                new DefaultTestDataForTask(context).Create();
             }
             else
             {

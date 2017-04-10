@@ -3,12 +3,15 @@ using Abp.Zero.EntityFramework;
 using LearningMpaAbp.Authorization.Roles;
 using LearningMpaAbp.MultiTenancy;
 using LearningMpaAbp.Users;
+using System.Data.Entity;
+using LearningMpaAbp.Tasks;
 
 namespace LearningMpaAbp.EntityFramework
 {
     public class LearningMpaAbpDbContext : AbpZeroDbContext<Tenant, Role, User>
     {
         //TODO: Define an IDbSet for your Entities...
+        public IDbSet<Task> Tasks { get; set; }
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.
@@ -18,7 +21,7 @@ namespace LearningMpaAbp.EntityFramework
         public LearningMpaAbpDbContext()
             : base("Default")
         {
-
+            
         }
 
         /* NOTE:
