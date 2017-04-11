@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DFA48E27-7D53-4955-A722-3D91A7119BE7}"
 	ProjectSection(SolutionItems) = preProject
@@ -30,21 +30,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningMpaAbp.Migrator", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C6C1FE29-B020-44A0-906B-144E3681281A}"
 	ProjectSection(SolutionItems) = preProject
-		01.学习ABP系列一——通过模板创建MPA版本项目.md = 01.学习ABP系列一——通过模板创建MPA版本项目.md
-		02.学习ABP系列二——领域层创建实体.md = 02.学习ABP系列二——领域层创建实体.md
-		03.学习ABP系列三——领域层定义仓储并实现.md = 03.学习ABP系列三——领域层定义仓储并实现.md
-		04.学习ABP系列四——创建应用服务.md = 04.学习ABP系列四——创建应用服务.md
-		05.学习ABP系列五——展现层实现增删改查.md = 05.学习ABP系列五——展现层实现增删改查.md
-		06.学习ABP系列六——定义导航菜单.md = 06.学习ABP系列六——定义导航菜单.md
-		07.学习ABP系列七——分页实现.md = 07.学习ABP系列七——分页实现.md
-		08.学习ABP系列八——Json格式化.md = 08.学习ABP系列八——Json格式化.md
-		09.学习ABP系列九——权限管理.md = 09.学习ABP系列九——权限管理.md
-		10.学习ABP系列十——扩展AbpSession.md = 10.学习ABP系列十——扩展AbpSession.md
-		11.学习ABP系列十———编写单元测试.md = 11.学习ABP系列十———编写单元测试.md
-		12.学习ABP系列十二——如何升级Abp并调试源码.md = 12.学习ABP系列十二——如何升级Abp并调试源码.md
-		13.学习ABP系列十三——如何升级Abp并高度源码.md = 13.学习ABP系列十三——如何升级Abp并高度源码.md
-		14.学习ABP系列十四——Redis缓存用起来.md = 14.学习ABP系列十四——Redis缓存用起来.md
-		15.学习ABP系列十五——创建微信公众号模块.md = 15.学习ABP系列十五——创建微信公众号模块.md
 		readme.md = readme.md
 	EndProjectSection
 EndProject

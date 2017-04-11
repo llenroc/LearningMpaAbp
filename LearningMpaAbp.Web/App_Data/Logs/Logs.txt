@@ -316,3 +316,8 @@ DEBUG 2017-04-11 00:52:45,944 [91   ] Abp.Modules.AbpModuleManager             -
 DEBUG 2017-04-11 00:52:45,950 [91   ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
 DEBUG 2017-04-11 00:52:45,951 [91   ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
 DEBUG 2017-04-11 00:52:45,951 [91   ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2017-04-11 07:05:28,172 [56   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is disconnected: a4e60f03-4116-4689-9291-d5ff2fc28a05
+DEBUG 2017-04-11 19:41:35,618 [117  ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2017-04-11 19:41:35,647 [117  ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-04-11 19:41:35,648 [117  ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-04-11 19:41:35,648 [117  ] Abp.Modules.AbpModuleManager             - Shutting down completed.

@@ -465,6 +465,21 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Wiki\01.学习ABP系列一——通过模板创建MPA版本项目.md" />
+    <Content Include="Wiki\02.学习ABP系列二——领域层创建实体.md" />
+    <Content Include="Wiki\03.学习ABP系列三——领域层定义仓储并实现.md" />
+    <Content Include="Wiki\04.学习ABP系列四——创建应用服务.md" />
+    <Content Include="Wiki\05.学习ABP系列五——展现层实现增删改查.md" />
+    <Content Include="Wiki\06.学习ABP系列六——定义导航菜单.md" />
+    <Content Include="Wiki\07.学习ABP系列七——分页实现.md" />
+    <Content Include="Wiki\08.学习ABP系列八——Json格式化.md" />
+    <Content Include="Wiki\09.学习ABP系列九——权限管理.md" />
+    <Content Include="Wiki\10.学习ABP系列十——扩展AbpSession.md" />
+    <Content Include="Wiki\11.学习ABP系列十———编写单元测试.md" />
+    <Content Include="Wiki\12.学习ABP系列十二——如何升级Abp并调试源码.md" />
+    <Content Include="Wiki\13.学习ABP系列十三——如何升级Abp并高度源码.md" />
+    <Content Include="Wiki\14.学习ABP系列十四——Redis缓存用起来.md" />
+    <Content Include="Wiki\15.学习ABP系列十五——创建微信公众号模块.md" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
