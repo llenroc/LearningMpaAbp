@@ -23,4 +23,5 @@ namespace LearningMpaAbp.Tasks.Dtos
         {
             return string.Format("[CreateTaskInput > AssignedPersonId = {0}, Description = {1}]", AssignedPersonId, Description);
         }
+    }
 }

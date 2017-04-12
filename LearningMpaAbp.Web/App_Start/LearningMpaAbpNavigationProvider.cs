@@ -46,6 +46,14 @@ namespace LearningMpaAbp.Web
                         url: "About",
                         icon: "fa fa-info"
                         )
+                ).AddItem(
+                new MenuItemDefinition(
+                    "TaskList",
+                    L("Task List"),
+                    url:"Tasks/Index",
+                    icon:"fa fa-tasks",
+                    requiresAuthentication:true
+                    )
                 );
         }
 
