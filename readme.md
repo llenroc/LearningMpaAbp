@@ -11,8 +11,8 @@
 [10.学习ABP系列十——扩展AbpSession](10.学习ABP系列十——扩展AbpSession)  
 [11.学习ABP系列十————编写单元测试](11.学习ABP系列十————编写单元测试)  
 [12.学习ABP系列十二——如何升级Abp并调试源码](12.学习ABP系列十二——如何升级Abp并调试源码)  
-[13.学习ABP系列十三——如何升级Abp并高度源码](13.学习ABP系列十三——如何升级Abp并高度源码)
-[14.学习ABP系列十四——Redis缓存用起来](14.学习ABP系列十四——Redis缓存用起来)  
+[13.学习ABP系列十三——Redis缓存用起来](13.学习ABP系列十三——Redis缓存用起来)  
+[14.学习ABP系列十四——应用BootstrapTable表格插件](14.学习ABP系列十四——应用BootstrapTable表格插件)  
 [15.学习ABP系列十五——创建微信公众号模块](15.学习ABP系列十五——创建微信公众号模块)  
 
 
@@ -249,9 +249,9 @@ namespace LearningMpaAbp.EntityFramework.Repositories
 
 # 学习ABP系列十二——如何升级Abp并调试源码
 
-# 学习ABP系列十三——如何升级Abp并高度源码
+# 学习ABP系列十三——Redis缓存用起来
 
-# 学习ABP系列十四——Redis缓存用起来
+# 学习ABP系列十四——应用BootstrapTable表格插件
 
 # 学习ABP系列十五——创建微信公众号模块
 

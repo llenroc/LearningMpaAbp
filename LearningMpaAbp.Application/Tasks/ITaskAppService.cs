@@ -10,7 +10,7 @@ namespace LearningMpaAbp.Tasks
 {
     public interface ITaskAppService:IApplicationService
     {
-        GetTaskOutput GetTasks(GetTasksInput input);
+        GetTasksOutput GetTasks(GetTasksInput input);
 
         void UpdateTask(UpdateTaskInput input);
 

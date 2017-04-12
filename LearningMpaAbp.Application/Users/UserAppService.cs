@@ -36,8 +36,7 @@ namespace LearningMpaAbp.Users
         {
             CheckErrors(await UserManager.RemoveFromRoleAsync(userId, roleName));
         }
-
-        public async Task<ListResultDto<UserListDto>> GetUsers()
+        public async Task<ListResultDto<UserListDto>> GetUsersAsync()
         {
             var users = await _userRepository.GetAllListAsync();
 
@@ -45,6 +44,16 @@ namespace LearningMpaAbp.Users
                 users.MapTo<List<UserListDto>>()
                 );
         }
+
+        public ListResultDto<UserListDto> GetUsers()
+        {
+            var users = _userRepository.GetAllList();
+
+            return new ListResultDto<UserListDto>(
+                users.MapTo<List<UserListDto>>()
+                );
+        }
+        
 
         public async Task CreateUser(CreateUserInput input)
         {

@@ -426,6 +426,8 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.signalR-2.2.1.js" />
     <Content Include="Scripts\jquery.signalR-2.2.1.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -457,6 +459,7 @@
       <DependentUpon>Login.css</DependentUpon>
     </Content>
     <Content Include="Views\Account\Register.js" />
+    <Content Include="Views\Tasks\index.js" />
     <Content Include="Views\Tenants\Index.js" />
     <Content Include="Views\Users\Index.js" />
     <Content Include="Web.config">
@@ -477,8 +480,8 @@
     <Content Include="Wiki\10.学习ABP系列十——扩展AbpSession.md" />
     <Content Include="Wiki\11.学习ABP系列十———编写单元测试.md" />
     <Content Include="Wiki\12.学习ABP系列十二——如何升级Abp并调试源码.md" />
-    <Content Include="Wiki\13.学习ABP系列十三——如何升级Abp并高度源码.md" />
-    <Content Include="Wiki\14.学习ABP系列十四——Redis缓存用起来.md" />
+    <Content Include="Wiki\13.学习ABP系列十三——Redis缓存用起来.md" />
+    <Content Include="Wiki\14.学习ABP系列十四——应用BootstrapTable表格插件.md" />
     <Content Include="Wiki\15.学习ABP系列十五——创建微信公众号模块.md" />
   </ItemGroup>
   <ItemGroup>
@@ -507,6 +510,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Layout\TopMenuViewModel.cs" />
+    <Compile Include="Models\Tasks\IndexViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\LearningMpaAbpWebViewPageBase.cs" />
     <Compile Include="Views\UrlChecker.cs" />
@@ -529,7 +533,9 @@
     <Content Include="Views\Tenants\Index.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Tasks\Index.cshtml" />
-    <Content Include="Views\Tasks\_CreateTasks.cshtml" />
+    <Content Include="Views\Tasks\_CreateTask.cshtml" />
+    <Content Include="Views\Tasks\_List.cshtml" />
+    <Content Include="Views\Tasks\_EditTask.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

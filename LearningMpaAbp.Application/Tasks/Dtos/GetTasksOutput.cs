@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LearningMpaAbp.Tasks.Dtos
 {
-    public class GetTaskOutput
+    public class GetTasksOutput
     {
         public List<TaskDto> Tasks { get; set; }
     }
