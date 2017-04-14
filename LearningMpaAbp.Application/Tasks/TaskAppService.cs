@@ -6,6 +6,7 @@ using Abp.Notifications;
 using Abp.Runtime.Session;
 using Abp.Timing;
 using AutoMapper;
+using Abp.Linq.Extensions;
 using LearningMpaAbp.Authorization;
 using LearningMpaAbp.Tasks.Dtos;
 using LearningMpaAbp.Users;
@@ -65,24 +66,45 @@ namespace LearningMpaAbp.Tasks
             return Mapper.Map<IList<TaskDto>>(tasks);
         }
 
+        //public GetTasksOutput GetTasks(GetTasksInput input)
+        //{
+        //    var query = _taskRepository.GetAll();
+
+        //    if (input.AssignedPersonId.HasValue)
+        //    {
+        //        query = query.Where(t => t.AssignedPersonId == input.AssignedPersonId.Value);
+        //    }
+
+        //    if (input.State.HasValue)
+        //    {
+        //        query = query.Where(t => t.State == input.State.Value);
+        //    }
+
+        //    //Used AutoMapper to automatically convert List<Task> to List<TaskDto>.
+        //    return new GetTasksOutput
+        //    {
+        //        Tasks = Mapper.Map<List<TaskDto>>(query.ToList())
+        //    };
+        //}
         public GetTasksOutput GetTasks(GetTasksInput input)
         {
-            var query = _taskRepository.GetAll();
+            var query = _taskRepository.GetAll().Include(t => t.AssignedPerson)
+                .WhereIf(input.State.HasValue, t => t.State == input.State.Value)
+                .WhereIf(!input.Filter.IsNullOrEmpty(), t => t.Title.Contains(input.Filter))
+                .WhereIf(input.AssignedPersonId.HasValue, t => t.AssignedPersonId == input.AssignedPersonId.Value);
 
-            if (input.AssignedPersonId.HasValue)
-            {
-                query = query.Where(t => t.AssignedPersonId == input.AssignedPersonId.Value);
-            }
+            //排序
+            if (!string.IsNullOrEmpty(input.Sorting))
+                query = query.OrderBy(input.Sorting);
+            else
+                query = query.OrderByDescending(t => t.CreationTime);
 
-            if (input.State.HasValue)
-            {
-                query = query.Where(t => t.State == input.State.Value);
-            }
+            var taskList = query.ToList();
 
             //Used AutoMapper to automatically convert List<Task> to List<TaskDto>.
             return new GetTasksOutput
             {
-                Tasks = Mapper.Map<List<TaskDto>>(query.ToList())
+                Tasks = Mapper.Map<List<TaskDto>>(taskList)
             };
         }
 
