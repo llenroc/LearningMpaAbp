@@ -478,7 +478,7 @@
     <Content Include="Wiki\08.学习ABP系列八——Json格式化.md" />
     <Content Include="Wiki\09.学习ABP系列九——权限管理.md" />
     <Content Include="Wiki\10.学习ABP系列十——扩展AbpSession.md" />
-    <Content Include="Wiki\11.学习ABP系列十———编写单元测试.md" />
+    <Content Include="Wiki\11.学习ABP系列十一——编写单元测试.md" />
     <Content Include="Wiki\12.学习ABP系列十二——如何升级Abp并调试源码.md" />
     <Content Include="Wiki\13.学习ABP系列十三——Redis缓存用起来.md" />
     <Content Include="Wiki\14.学习ABP系列十四——应用BootstrapTable表格插件.md" />
