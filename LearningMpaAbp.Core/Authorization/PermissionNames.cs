@@ -10,7 +10,7 @@
 
         public const string Pages_Tasks = "Pages.Tasks";
 
-        public const string Pages_Tasks_AssignPerson = "Pages.Tasks.AssignPerson";
+        public const string Pages_Tasks_AssignPerson = "Pages.Tasks.AssignPersonId";
 
         public const string Pages_Tasks_Delete = "Pages.Tasks.Delete";
     }

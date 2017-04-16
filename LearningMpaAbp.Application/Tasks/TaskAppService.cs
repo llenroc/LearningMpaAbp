@@ -34,31 +34,31 @@ namespace LearningMpaAbp.Tasks
         //private readonly IRepository<Person> _personRepository;
         private readonly IRepository<User, long> _userRepository;
 
-        private readonly ITaskCache _taskCache;
+        //private readonly ITaskCache _taskCache;
 
         /// <summary>
         ///In constructor, we can get needed classes/interfaces.
         ///They are sent here by dependency injection system automatically.
         /// </summary>
-        //public TaskAppService(IRepository<Task> taskRepository, IRepository<Person> personRepository)
-        //{
-        //    _taskRepository = taskRepository;
-        //    _personRepository = personRepository;
-        //}
-
-        /// <summary>
-        ///     In constructor, we can get needed classes/interfaces.
-        ///     They are sent here by dependency injection system automatically.
-        /// </summary>
-        public TaskAppService(IRepository<Task> taskRepository, IRepository<User, long> userRepository,
-            ISmtpEmailSenderConfiguration smtpEmialSenderConfigtion, INotificationPublisher notificationPublisher, ITaskCache taskCache)
+        public TaskAppService(IRepository<Task> taskRepository, IRepository<User,long> userRepository)
         {
             _taskRepository = taskRepository;
             _userRepository = userRepository;
-            _smtpEmialSenderConfig = smtpEmialSenderConfigtion;
-            _notificationPublisher = notificationPublisher;
-            _taskCache = taskCache;
         }
+
+        ///// <summary>
+        /////     In constructor, we can get needed classes/interfaces.
+        /////     They are sent here by dependency injection system automatically.
+        ///// </summary>
+        //public TaskAppService(IRepository<Task> taskRepository, IRepository<User, long> userRepository,
+        //    ISmtpEmailSenderConfiguration smtpEmialSenderConfigtion, INotificationPublisher notificationPublisher, ITaskCache taskCache)
+        //{
+        //    _taskRepository = taskRepository;
+        //    _userRepository = userRepository;
+        //    _smtpEmialSenderConfig = smtpEmialSenderConfigtion;
+        //    _notificationPublisher = notificationPublisher;
+        //    _taskCache = taskCache;
+        //}
 
         public IList<TaskDto> GetAllTasks()
         {
@@ -66,47 +66,47 @@ namespace LearningMpaAbp.Tasks
             return Mapper.Map<IList<TaskDto>>(tasks);
         }
 
-        //public GetTasksOutput GetTasks(GetTasksInput input)
-        //{
-        //    var query = _taskRepository.GetAll();
-
-        //    if (input.AssignedPersonId.HasValue)
-        //    {
-        //        query = query.Where(t => t.AssignedPersonId == input.AssignedPersonId.Value);
-        //    }
-
-        //    if (input.State.HasValue)
-        //    {
-        //        query = query.Where(t => t.State == input.State.Value);
-        //    }
-
-        //    //Used AutoMapper to automatically convert List<Task> to List<TaskDto>.
-        //    return new GetTasksOutput
-        //    {
-        //        Tasks = Mapper.Map<List<TaskDto>>(query.ToList())
-        //    };
-        //}
         public GetTasksOutput GetTasks(GetTasksInput input)
         {
-            var query = _taskRepository.GetAll().Include(t => t.AssignedPerson)
-                .WhereIf(input.State.HasValue, t => t.State == input.State.Value)
-                .WhereIf(!input.Filter.IsNullOrEmpty(), t => t.Title.Contains(input.Filter))
-                .WhereIf(input.AssignedPersonId.HasValue, t => t.AssignedPersonId == input.AssignedPersonId.Value);
+            var query = _taskRepository.GetAll();
 
-            //排序
-            if (!string.IsNullOrEmpty(input.Sorting))
-                query = query.OrderBy(input.Sorting);
-            else
-                query = query.OrderByDescending(t => t.CreationTime);
+            if (input.AssignedPersonId.HasValue)
+            {
+                query = query.Where(t => t.AssignedPersonId == input.AssignedPersonId.Value);
+            }
 
-            var taskList = query.ToList();
+            if (input.State.HasValue)
+            {
+                query = query.Where(t => t.State == input.State.Value);
+            }
 
             //Used AutoMapper to automatically convert List<Task> to List<TaskDto>.
             return new GetTasksOutput
             {
-                Tasks = Mapper.Map<List<TaskDto>>(taskList)
+                Tasks = Mapper.Map<List<TaskDto>>(query.ToList())
             };
         }
+        //public GetTasksOutput GetTasks(GetTasksInput input)
+        //{
+        //    var query = _taskRepository.GetAll().Include(t => t.AssignedPerson)
+        //        .WhereIf(input.State.HasValue, t => t.State == input.State.Value)
+        //        .WhereIf(!input.Filter.IsNullOrEmpty(), t => t.Title.Contains(input.Filter))
+        //        .WhereIf(input.AssignedPersonId.HasValue, t => t.AssignedPersonId == input.AssignedPersonId.Value);
+
+        //    //排序
+        //    if (!string.IsNullOrEmpty(input.Sorting))
+        //        query = query.OrderBy(input.Sorting);
+        //    else
+        //        query = query.OrderByDescending(t => t.CreationTime);
+
+        //    var taskList = query.ToList();
+
+        //    //Used AutoMapper to automatically convert List<Task> to List<TaskDto>.
+        //    return new GetTasksOutput
+        //    {
+        //        Tasks = Mapper.Map<List<TaskDto>>(taskList)
+        //    };
+        //}
 
         public async Task<TaskDto> GetTaskByIdAsync(int taskId)
         {
@@ -124,46 +124,46 @@ namespace LearningMpaAbp.Tasks
             return task.MapTo<TaskDto>();
         }
 
-        //public void UpdateTask(UpdateTaskInput input)
-        //{
-        //    //We can use Logger, it's defined in ApplicationService base class.
-        //    Logger.Info("Updating a task for input: " + input);
-
-        //    //Retrieving a task entity with given id using standard Get method of repositories.
-        //    var task = _taskRepository.Get(input.Id);
-
-        //    //Updating changed properties of the retrieved task entity.
-
-        //    if (input.State.HasValue)
-        //    {
-        //        task.State = input.State.Value;
-        //    }
-
-        //    if (input.AssignedPersonId.HasValue)
-        //    {
-        //        task.AssignedPerson = _personRepository.Load(input.AssignedPersonId.Value);
-        //    }
-
-        //    //We even do not call Update method of the repository.
-        //    //Because an application service method is a 'unit of work' scope as default.
-        //    //ABP automatically saves all changes when a 'unit of work' scope ends (without any exception).
-        //}
         public void UpdateTask(UpdateTaskInput input)
         {
             //We can use Logger, it's defined in ApplicationService base class.
             Logger.Info("Updating a task for input: " + input);
 
-            //获取是否有权限
-            bool canAssignTaskToOther = PermissionChecker.IsGranted(PermissionNames.Pages_Tasks_AssignPerson);
-            //如果任务已经分配且未分配给自己，且不具有分配任务权限，则抛出异常
-            if (input.AssignedPersonId.HasValue && input.AssignedPersonId.Value != AbpSession.GetUserId() && !canAssignTaskToOther)
+            //Retrieving a task entity with given id using standard Get method of repositories.
+            var task = _taskRepository.Get(input.Id);
+
+            //Updating changed properties of the retrieved task entity.
+
+            if (input.State.HasValue)
             {
-                throw new AbpAuthorizationException("没有分配任务给他人的权限！");
+                task.State = input.State.Value;
             }
 
-            var updateTask = Mapper.Map<Task>(input);
-            _taskRepository.Update(updateTask);
+            if (input.AssignedPersonId.HasValue)
+            {
+                task.AssignedPerson = _personRepository.Load(input.AssignedPersonId.Value);
+            }
+
+            //We even do not call Update method of the repository.
+            //Because an application service method is a 'unit of work' scope as default.
+            //ABP automatically saves all changes when a 'unit of work' scope ends (without any exception).
         }
+        //public void UpdateTask(UpdateTaskInput input)
+        //{
+        //    //We can use Logger, it's defined in ApplicationService base class.
+        //    Logger.Info("Updating a task for input: " + input);
+
+        //    //获取是否有权限
+        //    bool canAssignTaskToOther = PermissionChecker.IsGranted(PermissionNames.Pages_Tasks_AssignPerson);
+        //    //如果任务已经分配且未分配给自己，且不具有分配任务权限，则抛出异常
+        //    if (input.AssignedPersonId.HasValue && input.AssignedPersonId.Value != AbpSession.GetUserId() && !canAssignTaskToOther)
+        //    {
+        //        throw new AbpAuthorizationException("没有分配任务给他人的权限！");
+        //    }
+
+        //    var updateTask = Mapper.Map<Task>(input);
+        //    _taskRepository.Update(updateTask);
+        //}
 
         //public int CreateTask(CreateTaskInput input)
         //{
